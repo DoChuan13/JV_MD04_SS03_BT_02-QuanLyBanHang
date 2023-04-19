@@ -87,4 +87,3 @@ FROM OrderDetail
     JOIN Orders ON OrderDetail.oID = Orders.oID
     JOIN Customer ON Orders.cID = Customer.cID
     GROUP BY Orders.oID;
-    ;
