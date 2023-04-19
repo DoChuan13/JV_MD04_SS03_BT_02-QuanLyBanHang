@@ -81,8 +81,10 @@ SELECT Customer.NAME FROM Customer
     JOIN Orders ON Customer.cID <> Orders.cID;
 
 -- Order Detail List
-SELECT Orders.oID AS "Order ID", Orders.oDate AS "Order Date", (OrderDetail.odQTY * Product.pPrice) AS "Total"
+SELECT Orders.oID AS "Order ID", Orders.oDate AS "Order Date", SUM((OrderDetail.odQTY * Product.pPrice)) AS "Total"
 FROM OrderDetail
     JOIN Product ON OrderDetail.pID = Product.pID
     JOIN Orders ON OrderDetail.oID = Orders.oID
-    JOIN Customer ON Orders.cID = Customer.cID;
+    JOIN Customer ON Orders.cID = Customer.cID
+    GROUP BY Orders.oID;
+    ;
